@@ -117,21 +117,27 @@
                 <div class="col-lg-2 col-lg-offset-1">
                     <h5>EDUCATION</h5>
                 </div>
+            {% for school in education %}
+                {% if forloop.first %}
                 <div class="col-lg-6">
+                {% else %}
+                <div class="col-lg-6 col-lg-offset-3">
+                {% endif %}
                     <p>
-                        <t>Bsc. in Electrical and Electronic Engineering</t><br /> North South University <br />
-                        <i>Major in VLSI</i>
+                        <t>{{ school.degree }}</t><br /> <a  {% if school.institutionURL %} href={{ school.institutionURL }} target = "_blank"{% endif %} >{{ school.institution}}</a> <br />
+                        <i>{{ school.major }}</i>
                     </p>
                 </div>
                 <div class="col-lg-3">
                     <p>
-                        <sm>GRADUATED IN APRIL 2018</sm><br />
+                        <sm>GRADUATED IN {{ school.to_year }}</sm><br />
                         <!-- <imp>
               <sm>IN PROGRESS</sm>
             </imp> -->
                     </p>
+                
                 </div>
-
+            {% endfor %}
                 <!-- <div class="col-lg-6 col-lg-offset-3">
           <p>
             <t>Degree of Web Developer</t><br/> Hastings University <br/>
