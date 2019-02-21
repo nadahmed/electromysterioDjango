@@ -89,9 +89,7 @@
                         <h5>ABOUT</h5>
                     </div>
                     <div class="col-lg-6">
-                        <p>I'm an Electrical Engineer, graphic designer & a coder for fun. I'm interested in IoT edge
-                            devices along with web and app development. I also have skills in other fields like CAD
-                            Design, PCB design and UI/UX.</p>
+                        <p>I'm an Electrical Engineer, graphic designer & a web developer. I'm mostly interested in IoT edge devices and automation. I also have skills in fields such as CAD Design, PCB design and UI/UX.</p>
                     </div>
                     <div class="col-lg-3">
                         <!-- <p><a href="#"><i class="icon-file"></i></a>
@@ -124,8 +122,8 @@
                 <div class="col-lg-6 col-lg-offset-3">
                 {% endif %}
                     <p>
-                        <t>{{ school.degree }}</t><br /> <a  {% if school.institutionURL %} href={{ school.institutionURL }} target = "_blank"{% endif %} >{{ school.institution}}</a> <br />
-                        <i>{{ school.major }}</i>
+                        <t>{{ school.degree }}</t><br /><i>{{ school.major }}</i> <br/> <a  {% if school.institutionURL %} href= {{ school.institutionURL }} target = "_blank" {% endif %} >{{ school.institution}}</a>
+                        
                     </p>
                 </div>
                 <div class="col-lg-3">
@@ -314,7 +312,7 @@
 
 
 
-    <!-- <section id="work" name="work">
+    <section id="work" name="work">
     
     <div class="container desc">
       <div class="row">
@@ -363,7 +361,7 @@
       <br>
     </div>
     
-  </section> -->
+  </section>
 
     <section id="contact" name="contact">
         <!--FOOTER DESCRIPTION -->
@@ -396,38 +394,39 @@
                         <p>
                             <sm>PLEASE FEEL FREE TO REACH OUT</sm>
                         </p>
-                        <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php"
-                            method="POST">
-
+                        <form class="contact-form php-mail-form" role="form" action= "{% url 'index' %}" method="POST">
+                                {% csrf_token %}
                             <div class="form-group">
+                                    
                                 <label for="contact-name">Your Name</label>
-                                <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name"
+                                <input type="name" name={{ form.sender.html_name }} class="form-control" id="contact-name" placeholder="Your Name"
                                     data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
                                 <label for="contact-email">Your Email</label>
-                                <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email"
-                                    data-rule="email" data-msg="Please enter a valid email">
+                                <input type="email" name={{ form.from_email.html_name }} class="form-control" id="contact-email" placeholder="Your Email"
+                                    data-rule="email" data-msg="Please enter a valid email" >
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
                                 <label for="contact-subject">Subject</label>
-                                <input type="text" name="subject" class="form-control" id="contact-subject" placeholder="Subject"
+                                <input type="text" name={{ form.subject.html_name }} class="form-control" id="contact-subject" placeholder="Subject"
                                     data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
                                 <div class="validate"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="contact-message">Your Message</label>
-                                <textarea class="form-control" name="message" id="contact-message" placeholder="Your Message"
-                                    rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                                <textarea class="form-control" name={{ form.message.html_name }} id="contact-message" placeholder="Your Message"
+                                    rows="5" data-rule="required" data-msg="Please write something for me" ></textarea>
                                 <div class="validate"></div>
                             </div>
 
                             <div class="loading"></div>
-                            <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="error-message"></div>
+                            
 
                             <div class="form-send">
                                 <button type="submit" class="btn btn-large">Send Message</button>

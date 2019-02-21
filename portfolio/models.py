@@ -44,3 +44,14 @@ class Work(models.Model):
 
     def __str__(self):
         return self.company
+
+class Volunteer(models.Model):
+    title = models.CharField(verbose_name="Role", max_length = 50)
+    institution = models.CharField(verbose_name="Institution", max_length=30)
+    institutionURL= models.URLField(verbose_name="Website")
+    from_year = models.CharField(verbose_name="From", max_length = 10, blank= True)
+    to_year = models.CharField(verbose_name="To", max_length = 10)
+    description = models.CharField(verbose_name="Description", max_length = 250)
+
+    def __str__(self):
+        return self.company

@@ -107,7 +107,8 @@ jQuery(document).ready(function($) {
         if (msg == 'OK') {
           this_form.find('.loading').slideUp();
           this_form.find('.sent-message').slideDown();
-          this_form.find("input, textarea").val('');
+          //this_form.find("input, textarea").val('');
+          this_form.find('.form-control').val('');
         } else {
           this_form.find('.loading').slideUp();
           this_form.find('.error-message').slideDown().html(msg);

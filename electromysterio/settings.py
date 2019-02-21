@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio'
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +117,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Host for sending e-mail.
+EMAIL_HOST = 'smtp.domain.com'
+
+# Port for sending e-mail.
+EMAIL_PORT = 465
+
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = 'contact@electromysterio.tech'
+EMAIL_HOST_PASSWORD = 'N))R@hmed9479'
+EMAIL_USE_SSL = True
 
 STATIC_URL = '/static/'
 
