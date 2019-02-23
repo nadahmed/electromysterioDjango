@@ -1,9 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-class Skill(models.Model):
-    def _(self):
-        return self
+class Software(models.Model):
+    
     name = models.CharField(verbose_name="Skill", unique=True, max_length=50, blank= False, null=False)
     level = models.IntegerField(validators=[
         MaxValueValidator(100),
@@ -11,6 +10,27 @@ class Skill(models.Model):
     ], blank= False, null=False)
     def __str__(self):
         return self.name
+
+class Graphics(models.Model):
+    
+    name = models.CharField(verbose_name="Skill", unique=True, max_length=50, blank= False, null=False)
+    level = models.IntegerField(validators=[
+        MaxValueValidator(100),
+        MinValueValidator(0)
+    ], blank= False, null=False)
+    def __str__(self):
+        return self.name
+
+class Hardware(models.Model):
+    
+    name = models.CharField(verbose_name="Skill", unique=True, max_length=50, blank= False, null=False)
+    level = models.IntegerField(validators=[
+        MaxValueValidator(100),
+        MinValueValidator(0)
+    ], blank= False, null=False)
+    def __str__(self):
+        return self.name
+
 
 class Achievement(models.Model):
     title = models.CharField(verbose_name="Title", max_length=100)
@@ -38,8 +58,8 @@ class Work(models.Model):
     title = models.CharField(verbose_name="Role", max_length = 50)
     company = models.CharField(verbose_name="Company", max_length=30)
     companyURL= models.URLField(verbose_name="Company website")
-    from_year = models.CharField(verbose_name="From", max_length = 10, blank= True)
-    to_year = models.CharField(verbose_name="To", max_length = 10)
+    from_year = models.CharField(verbose_name="From", max_length = 20, blank= True)
+    to_year = models.CharField(verbose_name="To", max_length = 20)
     description = models.CharField(verbose_name="Company Description", max_length = 250)
 
     def __str__(self):

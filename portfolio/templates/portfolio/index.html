@@ -15,7 +15,8 @@
     <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic|Raleway:400,300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic|Raleway:400,300,700"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -42,10 +43,14 @@
                 <div class="row">
                     <div class="dropdown">
                         <ul id="nav" class="nav">
-                            <li class="menu-item"><a class="smothscroll" href="#about" title="About"><i class="fa fa-user"></i></a></li>
-                            <li class="menu-item"><a class="smothscroll" href="#resume" title="Resume"><i class="fa fa-file-text-o"></i></a></li>
+                            <li class="menu-item"><a class="smothscroll" href="#about" title="About"><i
+                                        class="fa fa-user"></i></a></li>
+
+                            <li class="menu-item"><a class="smothscroll" href="#resume" title="Resume"><i
+                                        class="fa fa-file-text"></i></a></li>
                             <!-- <li class="menu-item"><a class="smothscroll" href="#work" title="Works"><i class="fa fa-briefcase"></i></a></li> -->
-                            <li class="menu-item"><a class="smothscroll" href="#contact" title="Contact"><i class="fa fa-envelope"></i></a></li>
+                            <li class="menu-item"><a class="smothscroll" href="#contact" title="Contact"><i
+                                        class="fa fa-envelope"></i></a></li>
                         </ul>
                         <!--/ uL#nav -->
                     </div>
@@ -62,25 +67,25 @@
         <!--/ #topbar-inner -->
     </div>
     <!--/ #section-topbar -->
-
-    <div id="headerwrap">
-        <div class="container">
-            <div class="row centered">
-                <div class="col-lg-12">
-                    <h1>Noor Al Din Ahmed</h1>
-                    <h3>Electrical Engineer | Graphic Designer | Django Developer</h3>
-                    <h3>nooraldinahmed@gmail.com</h3>
-                </div>
-                <!--/.col-lg-12 -->
-            </div>
-            <!--/.row -->
-        </div>
-        <!--/.container -->
-    </div>
-    <!--/.#headerwrap -->
-
-
     <section id="about" name="about">
+        <div id="headerwrap">
+            <div class="container">
+                <div class="row centered">
+                    <div class="col-lg-12">
+                        <h1>Noor Al Din Ahmed</h1>
+                        <h3>Electrical Engineer | Programmer | Graphic Designer</h3>
+                        <h3>nooraldinahmed@ieee.org</h3>
+                    </div>
+                    <!--/.col-lg-12 -->
+                </div>
+                <!--/.row -->
+            </div>
+            <!--/.container -->
+        </div>
+        <!--/.#headerwrap -->
+
+
+
         <div id="intro">
             <div class="container">
                 <div class="row">
@@ -89,13 +94,16 @@
                         <h5>ABOUT</h5>
                     </div>
                     <div class="col-lg-6">
-                        <p>I'm an Electrical Engineer, graphic designer & a web developer. I'm mostly interested in IoT edge devices and automation. I also have skills in fields such as CAD Design, PCB design and UI/UX.</p>
+                        <p>I'm an Electrical Engineer, graphic designer & a web developer. I'm mostly interested in IoT
+                            edge devices and automation. I also have skills in fields such as CAD Design, PCB design and
+                            UI/UX.</p>
                     </div>
                     <div class="col-lg-3">
                         <!-- <p><a href="#"><i class="icon-file"></i></a>
                             <sm>DOWNLOAD RESUME</sm>
                         </p> -->
-                        <a href="{% static 'files/Resume.pdf' %}" target= "_blank"download><button type="button" class="btn btn-primary"> DOWNLOAD RESUME </button></a>
+                        <a href="{% static 'files/Resume.pdf' %}" target="_blank" download><button type="button"
+                                class="btn btn-primary"> DOWNLOAD RESUME </button></a>
                     </div>
 
                 </div>
@@ -108,6 +116,43 @@
 
 
     <section id="resume" name="resume">
+
+        <!--WORK DESCRIPTION -->
+        <div class="container desc">
+                <div class="row">
+
+                    <div class="col-lg-2 col-lg-offset-1">
+                        <h5>WORK</h5>
+                    </div>
+                    {% for work in works %}
+                    {% if forloop.first %}
+                    <div class="col-lg-6">
+                        {% else %}
+                        <div class="col-lg-6 col-lg-offset-3">
+                            {% endif %}
+                            <p>
+                                <t>{{ work.title }}</t><br /> <a {% if work.companyURL %} href={{ work.companyURL }}
+                                    target="_blank" {% endif %}>{{ work.company }}</a> <br />
+                            </p>
+                            <p>
+                                <more>{{ work.description }}</more>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>{{ work.from_year }} - {{ work.to_year }}</sm>
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!--/.row -->
+                    <hr>
+
+                </div>
+                <!--/.container -->
+
+
+
         <!--EDUCATION DESCRIPTION -->
         <div class="container desc">
             <div class="row">
@@ -115,28 +160,30 @@
                 <div class="col-lg-2 col-lg-offset-1">
                     <h5>EDUCATION</h5>
                 </div>
-            {% for school in education %}
+                {% for school in education %}
                 {% if forloop.first %}
                 <div class="col-lg-6">
-                {% else %}
-                <div class="col-lg-6 col-lg-offset-3">
-                {% endif %}
-                    <p>
-                        <t>{{ school.degree }}</t><br /><i>{{ school.major }}</i> <br/> <a  {% if school.institutionURL %} href= {{ school.institutionURL }} target = "_blank" {% endif %} >{{ school.institution}}</a>
-                        
-                    </p>
-                </div>
-                <div class="col-lg-3">
-                    <p>
-                        <sm>GRADUATED IN {{ school.to_year }}</sm><br />
-                        <!-- <imp>
+                    {% else %}
+                    <div class="col-lg-6 col-lg-offset-3">
+                        {% endif %}
+                        <p>
+                            <t>{{ school.degree }}</t><br /><i>{{ school.major }}</i> <br /> <a
+                                {% if school.institutionURL %} href={{ school.institutionURL }} target="_blank"
+                                {% endif %}>{{ school.institution}}</a>
+
+                        </p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p>
+                            <sm>GRADUATED IN {{ school.to_year }}</sm><br />
+                            <!-- <imp>
               <sm>IN PROGRESS</sm>
             </imp> -->
-                    </p>
-                
-                </div>
-            {% endfor %}
-                <!-- <div class="col-lg-6 col-lg-offset-3">
+                        </p>
+
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="col-lg-6 col-lg-offset-3">
           <p>
             <t>Degree of Web Developer</t><br/> Hastings University <br/>
             <i>2 Years Course</i>
@@ -148,220 +195,293 @@
           </p>
         </div> -->
 
+                </div>
+                <!--/.row -->
+                <br>
             </div>
-            <!--/.row -->
-            <br>
-            <hr>
-        </div>
-        <!--/.container -->
+            <!--/.container -->
+
+
+
+            
+
+
+                <!--/.container -->
+
+                <!--SKILLS DESCRIPTION -->
+                <div id="skillswrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <h5>SKILLS</h5><br>
+                                <div class="col-xs-4 col-lg-12">
+                                    <p><i class="fa fa-circle" style="color: #1486c9"></i>
+                                        <sm> Beginner</sm>
+                                    </p>
+                                </div>
+                                <div class="col-xs-4 col-lg-12">
+                                    <p><i class="fa fa-circle" style="color:#1abc9c"></i>
+                                        <sm> Intermediate</sm>
+                                    </p>
+                                </div>
+                                <div class="col-xs-4 col-lg-12">
+                                    <p><i class="fa fa-circle" style="color:#df5c5c"></i>
+                                        <sm> Expert</sm>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 centered">
+                                <p style="text-transform:uppercase;"><b>SOFTWARE</b></p>
+                            </div>
+                            <div class="col-lg-9">
+                                {% for software in softwares %}
+                                <div class="col-lg-4">
+                                    <!-- <a style="text-transform: uppercase; color: white">{{ software.name }}</a> -->
+                                    <div class="progress" style="height:30px;">
+                                        {% if software.level < 50 %}
+                                        <div class="progress-bar"
+                                            style="width:{{ software.level }}%; margin: auto; background:#1486c9;">
+                                            {{ software.name }}
+                                        </div>
+                                        {% elif software.level >= 80 %}
+                                        <div class="progress-bar"
+                                            style="width:{{ software.level }}%; background: #df5c5c;">{{ software.name }}</div>
+                                        {% else %}
+                                        <div class="progress-bar"
+                                            style="width:{{ software.level }}%; background: #1abc9c;">{{ software.name }}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col-lg-9 col-lg-offset-3 centered">
+                                <p style="text-transform:uppercase;"><b>HARDWARE</b></p>
+                            </div>
+                            <div class="col-lg-3 col-lg-offset-3">
+                                <p style="text-transform: uppercase">PCB Design</p>
+                                <div class="progress" style="height:30px">
+                                    <div class="progress-bar" style="width:90%;height:30px"></div>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-lg-3">
+                                <p style="text-transform: uppercase">C++</p>
+                                <div class="progress" style="height:30px">
+                                    <div class="progress-bar" style="width:40%;height:30px; background: #1abc9c;"></div>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-lg-3">
+                                <p style="text-transform: uppercase">SolidWorks</p>
+                                <div class="progress" style="height:30px">
+                                    <div class="progress-bar" style="width:70%;height:30px"></div>
+                                </div>
+                                <br>
+                            </div>
+
+                        </div>
+                        <!--/.row -->
+                        <br>
+                    </div>
+                    <!--/.container -->
+                </div>
+                <!--/ #skillswrap -->
+
+                <!--SKILLS DESCRIPTION -->
+                <!-- <div id="skillswrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-1">
+                            <h5>SKILLS</h5>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="pcbdesign" height="130" width="130"></canvas>
+                            <p>PCB Design</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="circuit" height="130" width="130"></canvas>
+                            <p>Circuit Simulation</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="embc" height="130" width="130"></canvas>
+                            <p>Embeded C++</p>
+                            <br>
+                        </div>
+
+                        <div class="col-lg-3 col-lg-offset-3 centered">
+                            <canvas id="python" height="130" width="130"></canvas>
+                            <p>Python/Django</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="photoshop" height="130" width="130"></canvas>
+                            <p>Photoshop</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="illustrator" height="130" width="130"></canvas>
+                            <p>Illustrator</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-3 centered">
+                            <canvas id="solid" height="130" width="130"></canvas>
+                            <p>SolidWorks</p>
+                            <br>
+                        </div>
+                        <div class="col-lg-3 centered">
+                            <canvas id="msoffice" height="130" width="130"></canvas>
+                            <p>Microsoft Office</p>
+                            <br>
+                        </div>
+
+                    </div>
+                    
+                    <br>
+                </div>
+                
+            </div> -->
+                <!--/ #skillswrap -->
+
+                <!--EXTRA CURRICULAR DESCRIPTION -->
+                <div class="container desc">
+                    <div class="row">
+
+                        <div class="col-lg-2 col-lg-offset-1">
+                            <h5>EXTRA CURRICULAR</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>
+                                <t>Web Master</t><br />IEEE Robotics and Automation Society Bangladesh Chapter<br />
+                            </p>
+                            <!-- <p>
+                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
+            </p> -->
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>MARCH 2018 - PRESENT</sm>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <p>
+                                <t>Freelance Graphic Designer</t><br />Fanrock<br />
+                            </p>
+                            <!-- <p>
+                <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
+            </p> -->
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <!-- <sm>MARCH 2018 - PRESENT</sm> -->
+                            </p>
+                        </div>
+                    </div>
+                    <!--/.row -->
+                </div>
+                <br>
+                <!--AWARDS DESCRIPTION -->
+                <div class="container desc">
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-1">
+                            <h5>AWARDS</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <p>
+                                <t>Winner of Project Showcase and Poster Presentation</t>
+                                <br />Organized by IEEE North South University Student Branch & IEEE NSU Power and
+                                Energy
+                                Society<br />
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>FEBRUARY 2018</sm>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <p>
+                                <t>1st Runner Up in Capstone Project Showcase</t><br /> Final year project showcase
+                            </p>
+                            <!-- <p>
+              <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
+            </p> -->
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>DECEMBER 2017</sm>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!--/.row -->
+                    <br>
+                </div>
+                <!--/.container -->
     </section>
 
 
-    <!--WORK DESCRIPTION -->
-    <div class="container desc">
-        <div class="row">
+    <section id="works" name="works">
 
-            <div class="col-lg-2 col-lg-offset-1">
-                <h5>WORK</h5>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    <t>Co Founder & Electrical Design Engineer</t><br /> Genie IoT <br />
-                </p>
-                <!-- <p>
-                    <more>During my stay here I have designed the Hardware from scratch. Solved an inconvenience of similar products in the market. Wrote the firmware in C++. Built a prototype backend server using Django to implement IoT to the product. Prepared Powerpoint slides for Pitch Decks and other events.</more>
-                </p> -->
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    <sm>JANUARY 2018 - PRESENT</sm>
-                </p>
-            </div>
-
-            <div class="col-lg-6 col-lg-offset-3">
-                <p>
-                    <t>Web Master</t><br />IEEE Robotics and Automation Society Bangladesh Chapter<br />
-                </p>
-                <!-- <p>
-                    <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
-                </p> -->
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    <sm>MARCH 2018 - PRESENT</sm>
-                </p>
-            </div>
-        
-            <div class="col-lg-6 col-lg-offset-3">
-                <p>
-                    <t>Freelance Graphic Designer</t><br />Fanrock<br />
-                </p>
-                <!-- <p>
-                    <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
-                </p> -->
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    <!-- <sm>MARCH 2018 - PRESENT</sm> -->
-                </p>
-            </div>
-        </div>
-        <!--/.row -->
-    </div>
-    <br>
-    <hr>
-    </div>
-    <!--/.container -->
-
-
-    <!--AWARDS DESCRIPTION -->
-    <div class="container desc">
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-1">
-                <h5>AWARDS</h5>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    <t>Winner of Project Showcase and Poster Presentation</t>
-                    <br />Organized by IEEE North South University Student Branch & IEEE NSU Power and Energy Society<br />
-                </p>
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    <sm>FEBRUARY 2018</sm>
-                </p>
-            </div>
-
-            <div class="col-lg-6 col-lg-offset-3">
-                <p>
-                    <t>1st Runner Up in Capstone Project Showcase</t><br /> Final year project showcase
-                </p>
-                <!-- <p>
-          <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</more>
-        </p> -->
-            </div>
-            <div class="col-lg-3">
-                <p>
-                    <sm>DECEMBER 2017</sm>
-                </p>
-            </div>
-
-        </div>
-        <!--/.row -->
-        <br>
-    </div>
-    <!--/.container -->
-
-
-    <!--SKILLS DESCRIPTION -->
-    <div id="skillswrap">
-        <div class="container">
+        <div class="container desc">
             <div class="row">
                 <div class="col-lg-2 col-lg-offset-1">
-                    <h5>SKILLS</h5>
+                    <h5>PORTFOLIO</h5>
                 </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="pcbdesign" height="130" width="130"></canvas>
-                    <p>PCB Design</p>
-                    <br>
+                <div class="col-lg-6">
+                    <p><img class="img-responsive" src="img/port01.jpg" alt=""></p>
                 </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="circuit" height="130" width="130"></canvas>
-                    <p>Circuit Simulation</p>
-                    <br>
-                </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="embc" height="130" width="130"></canvas>
-                    <p>Embeded C++</p>
-                    <br>
+                <div class="col-lg-3">
+                    <p>CANALS OF ENGLAND</p>
+                    <p>
+                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book.<br /><br />
+                            <sm><i class="icon-tag"></i> design</sm>
+                        </more>
+                    </p>
                 </div>
 
-                <div class="col-lg-3 col-lg-offset-3 centered">
-                    <canvas id="python" height="130" width="130"></canvas>
-                    <p>Python/Django</p>
-                    <br>
+                <div class="col-lg-6 col-lg-offset-3">
+                    <p><img class="img-responsive" src="img/port02.jpg" alt=""></p>
                 </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="photoshop" height="130" width="130"></canvas>
-                    <p>Photoshop</p>
-                    <br>
+                <div class="col-lg-3">
+                    <p>SANKEY</p>
+                    <p>
+                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book.<br /><br />
+                            <sm><i class="icon-tag"></i> front-end</sm>
+                        </more>
+                    </p>
                 </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="illustrator" height="130" width="130"></canvas>
-                    <p>Illustrator</p>
-                    <br>
+
+                <div class="col-lg-6 col-lg-offset-3">
+                    <p><img class="img-responsive" src="img/port03.jpg" alt=""></p>
                 </div>
-                <div class="col-lg-3 col-lg-offset-3 centered">
-                    <canvas id="solid" height="130" width="130"></canvas>
-                    <p>SolidWorks</p>
-                    <br>
-                </div>
-                <div class="col-lg-3 centered">
-                    <canvas id="msoffice" height="130" width="130"></canvas>
-                    <p>Microsoft Office</p>
-                    <br>
+                <div class="col-lg-3">
+                    <p>WE GROW</p>
+                    <p>
+                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book.<br /><br />
+                            <sm><i class="icon-tag"></i> web design</sm>
+                        </more>
+                    </p>
                 </div>
 
             </div>
-            <!--/.row -->
+
+            <br>
             <br>
         </div>
-        <!--/.container -->
-    </div>
-    <!--/ #skillswrap -->
 
-
-
-    <section id="work" name="work">
-    
-    <div class="container desc">
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-1">
-          <h5>PORTFOLIO</h5>
-        </div>
-        <div class="col-lg-6">
-          <p><img class="img-responsive" src="img/port01.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-          <p>CANALS OF ENGLAND</p>
-          <p>
-            <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-              <sm><i class="icon-tag"></i> design</sm>
-            </more>
-          </p>
-        </div>
-
-        <div class="col-lg-6 col-lg-offset-3">
-          <p><img class="img-responsive" src="img/port02.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-          <p>SANKEY</p>
-          <p>
-            <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-              <sm><i class="icon-tag"></i> front-end</sm>
-            </more>
-          </p>
-        </div>
-
-        <div class="col-lg-6 col-lg-offset-3">
-          <p><img class="img-responsive" src="img/port03.jpg" alt=""></p>
-        </div>
-        <div class="col-lg-3">
-          <p>WE GROW</p>
-          <p>
-            <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-              <sm><i class="icon-tag"></i> web design</sm>
-            </more>
-          </p>
-        </div>
-
-      </div>
-      
-      <br>
-      <br>
-    </div>
-    
-  </section>
+    </section>
 
     <section id="contact" name="contact">
         <!--FOOTER DESCRIPTION -->
@@ -377,7 +497,8 @@
                             <t>Email</t><br /> nooraldinahmed@gmail.com <br />
                         </p>
                         <p>
-                            <t>Address</t><br /> Genie IoT, Banglalink IT Incubator <br /> Janata Tower (Level -4) <br /> Software Technology
+                            <t>Address</t><br /> Genie IoT, Banglalink IT Incubator <br /> Janata Tower (Level -4)
+                            <br /> Software Technology
                             Park <br /> 49, Kawran Bazar <br /> Dhaka-1219, Bangladesh <br />
                         </p>
                         <p>
@@ -386,47 +507,53 @@
                         <p>
                             <t>Social Links</t><br />
                             <a href="https://github.com/nadahmed" target="_blank"><i class="fa fa-github"></i></a>
-                            <a href="https://www.facebook.com/noor.a.d.ahmed" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.linkedin.com/in/nadahmed/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/noor.a.d.ahmed" target="_blank"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/nadahmed/" target="_blank"><i
+                                    class="fa fa-linkedin"></i></a>
                         </p>
                     </div>
                     <div class="col-lg-6">
                         <p>
                             <sm>PLEASE FEEL FREE TO REACH OUT</sm>
                         </p>
-                        <form class="contact-form php-mail-form" role="form" action= "{% url 'index' %}" method="POST">
-                                {% csrf_token %}
+                        <form class="contact-form php-mail-form" role="form" action="{% url 'index' %}" method="POST">
+                            {% csrf_token %}
                             <div class="form-group">
-                                    
+
                                 <label for="contact-name">Your Name</label>
-                                <input type="name" name={{ form.sender.html_name }} class="form-control" id="contact-name" placeholder="Your Name"
-                                    data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                <input type="name" name={{ form.sender.html_name }} class="form-control"
+                                    id="contact-name" placeholder="Your Name" data-rule="minlen:4"
+                                    data-msg="Please enter at least 4 chars">
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
                                 <label for="contact-email">Your Email</label>
-                                <input type="email" name={{ form.from_email.html_name }} class="form-control" id="contact-email" placeholder="Your Email"
-                                    data-rule="email" data-msg="Please enter a valid email" >
+                                <input type="email" name={{ form.from_email.html_name }} class="form-control"
+                                    id="contact-email" placeholder="Your Email" data-rule="email"
+                                    data-msg="Please enter a valid email">
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
                                 <label for="contact-subject">Subject</label>
-                                <input type="text" name={{ form.subject.html_name }} class="form-control" id="contact-subject" placeholder="Subject"
-                                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                <input type="text" name={{ form.subject.html_name }} class="form-control"
+                                    id="contact-subject" placeholder="Subject" data-rule="minlen:4"
+                                    data-msg="Please enter at least 8 chars of subject">
                                 <div class="validate"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="contact-message">Your Message</label>
-                                <textarea class="form-control" name={{ form.message.html_name }} id="contact-message" placeholder="Your Message"
-                                    rows="5" data-rule="required" data-msg="Please write something for me" ></textarea>
+                                <textarea class="form-control" name={{ form.message.html_name }} id="contact-message"
+                                    placeholder="Your Message" rows="5" data-rule="required"
+                                    data-msg="Please write something for me"></textarea>
                                 <div class="validate"></div>
                             </div>
 
                             <div class="loading"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                             <div class="error-message"></div>
-                            
+
 
                             <div class="form-send">
                                 <button type="submit" class="btn btn-large">Send Message</button>
@@ -442,23 +569,6 @@
         </div>
         <!--/ #footer -->
     </section>
-
-    <div id="copyrights">
-        <div class="container">
-            <!-- <p>
-                &copy; Copyrights <strong>Kelvin</strong>. All Rights Reserved
-            </p> -->
-            <div class="credits">
-                <!--
-          You are NOT allowed to delete the credit link to TemplateMag with free version.
-          You can delete the credit link only if you bought the pro version.
-          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/kelvin-bootstrap-resume-template/
-          Licensing information: https://templatemag.com/license/
-        -->
-                Created with Kelvin template by <a href="https://templatemag.com/">TemplateMag</a>
-            </div>
-        </div>
-    </div>
 
     <!-- JavaScript Libraries -->
     <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
