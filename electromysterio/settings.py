@@ -75,10 +75,20 @@ WSGI_APPLICATION = 'electromysterio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+
 DATABASES = {
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5ku4nkl4ke1gh',
+        'HOST': 'ec2-54-163-234-88.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'uownmovdteagwq',
+        'PASSWORD': 'b3df9934d236a1ecb50f1305e477d5962944bcc081a2b5dc6667ef8f1bd2a835',
     }
 }
 
