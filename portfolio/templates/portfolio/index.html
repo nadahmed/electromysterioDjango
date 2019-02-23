@@ -45,6 +45,8 @@
                         <ul id="nav" class="nav">
                             <li class="menu-item"><a class="smothscroll" href="#about" title="About"><i
                                         class="fa fa-user"></i></a></li>
+                            <li class="menu-item"><a class="smothscroll" href="#skills" title="Skills"><i
+                                        class="fa fa-sliders"></i></a></li>
 
                             <li class="menu-item"><a class="smothscroll" href="#resume" title="Resume"><i
                                         class="fa fa-file-text"></i></a></li>
@@ -89,12 +91,11 @@
         <div id="intro">
             <div class="container">
                 <div class="row">
-
                     <div class="col-lg-2 col-lg-offset-1">
                         <h5>ABOUT</h5>
                     </div>
                     <div class="col-lg-6">
-                        <p>I'm an Electrical Engineer, graphic designer & a web developer. I'm mostly interested in IoT
+                        <p>I'm an Electrical Engineer, web developer & a graphic designer. I'm mostly interested in IoT
                             edge devices and automation. I also have skills in fields such as CAD Design, PCB design and
                             UI/UX.</p>
                     </div>
@@ -103,87 +104,188 @@
                             <sm>DOWNLOAD RESUME</sm>
                         </p> -->
                         <a href="{% static 'files/Resume.pdf' %}" target="_blank" download><button type="button"
-                                class="btn btn-primary"> DOWNLOAD RESUME </button></a>
+                                class="btn btn-primary"> DOWNLOAD RESUME </button></a><br><br>
+                        <a href="https://projects.electromysterio.tech" target="_blank"><button type="button"
+                                class="btn btn-success"> CHECK OUT MY PROJECTS </button></a>
                     </div>
 
                 </div>
                 <!--/.row -->
+                <hr>
             </div>
             <!--/.container -->
         </div>
         <!--/ #intro -->
     </section>
+    <section id="skills" name="skills">
+        <!--SKILLS DESCRIPTION -->
+        <div id="skillswrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-lg-offset-1">
+                        <h5>SKILLS</h5><br>
+                        <div class="col-xs-4 col-lg-12">
+                            <p><i class="fa fa-circle" style="color: #1486c9"></i>
+                                <sm> Beginner</sm>
+                            </p>
+                        </div>
+                        <div class="col-xs-5 col-lg-12">
+                            <p><i class="fa fa-circle" style="color:#1abc9c"></i>
+                                <sm> Intermediate</sm>
+                            </p>
+                        </div>
+                        <div class="col-xs-3 col-lg-12">
+                            <p><i class="fa fa-circle" style="color:#df5c5c"></i>
+                                <sm> Expert</sm>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
 
+                        <div class="col-lg-4 centered">
+                            <p style="text-transform:uppercase;"><b>ELECTRONICS</b></p>
+                            {% for hardware in hardwares %}
+                            <!-- <a style="text-transform: uppercase; color: white">{{ software.name }}</a> -->
+                            <div class="progress" style="height:30px;">
+                                {% if hardware.level < 50 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ hardware.level }}%; margin: auto; background:#1486c9;">
+                                    {{ hardware.name }}
+                                </div>
+                                {% elif hardware.level >= 80 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ hardware.level }}%; background: #df5c5c;">{{ hardware.name }}</div>
+                                {% else %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ hardware.level }}%; background: #1abc9c;">{{ hardware.name }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="col-lg-4 centered">
+                            <p style="text-transform:uppercase;"><b>SOFTWARE</b></p>
+                            {% for software in softwares %}
+                            <!-- <a style="text-transform: uppercase; color: white">{{ software.name }}</a> -->
+                            <div class="progress" style="height:30px;">
+                                {% if software.level < 50 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ software.level }}%; margin: auto; background:#1486c9;">
+                                    {{ software.name }}
+                                </div>
+                                {% elif software.level >= 80 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ software.level }}%; background: #df5c5c;">{{ software.name }}</div>
+                                {% else %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ software.level }}%; background: #1abc9c;">{{ software.name }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="col-lg-4 centered">
+                            <p style="text-transform:uppercase;"><b>OTHERS</b></p>
+                            {% for other in others %}
+                            <!-- <a style="text-transform: uppercase; color: white">{{ software.name }}</a> -->
+                            <div class="progress" style="height:30px;">
+                                {% if other.level < 50 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ other.level }}%; margin: auto; background:#1486c9;">
+                                    {{ other.name }}
+                                </div>
+                                {% elif other.level >= 80 %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ other.level }}%; background: #df5c5c;">{{ other.name }}</div>
+                                {% else %}
+                                <div class="progress-bar" role='progress-bar'
+                                    style="width:{{ other.level }}%; background: #1abc9c;">{{ other.name }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!--/.row -->
+                <br>
+            </div>
+            <!--/.container -->
+        </div>
+        <!--/ #skillswrap -->
+    </section>
 
     <section id="resume" name="resume">
 
         <!--WORK DESCRIPTION -->
         <div class="container desc">
-                <div class="row">
-
-                    <div class="col-lg-2 col-lg-offset-1">
-                        <h5>WORK</h5>
-                    </div>
-                    {% for work in works %}
-                    {% if forloop.first %}
-                    <div class="col-lg-6">
-                        {% else %}
-                        <div class="col-lg-6 col-lg-offset-3">
-                            {% endif %}
-                            <p>
-                                <t>{{ work.title }}</t><br /> <a {% if work.companyURL %} href={{ work.companyURL }}
-                                    target="_blank" {% endif %}>{{ work.company }}</a> <br />
-                            </p>
-                            <p>
-                                <more>{{ work.description }}</more>
-                            </p>
-                        </div>
-                        <div class="col-lg-3">
-                            <p>
-                                <sm>{{ work.from_year }} - {{ work.to_year }}</sm>
-                            </p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <!--/.row -->
-                    <hr>
-
-                </div>
-                <!--/.container -->
-
-
-
-        <!--EDUCATION DESCRIPTION -->
-        <div class="container desc">
             <div class="row">
 
                 <div class="col-lg-2 col-lg-offset-1">
-                    <h5>EDUCATION</h5>
+                    <h5>WORK</h5>
                 </div>
-                {% for school in education %}
+                {% for work in works %}
                 {% if forloop.first %}
                 <div class="col-lg-6">
                     {% else %}
                     <div class="col-lg-6 col-lg-offset-3">
                         {% endif %}
                         <p>
-                            <t>{{ school.degree }}</t><br /><i>{{ school.major }}</i> <br /> <a
-                                {% if school.institutionURL %} href={{ school.institutionURL }} target="_blank"
-                                {% endif %}>{{ school.institution}}</a>
-
+                            <t>{{ work.title }}</t><br /> <a {% if work.companyURL %} href={{ work.companyURL }}
+                                target="_blank" {% endif %}>{{ work.company }}</a> <br />
+                        </p>
+                        <p>
+                            <more>{{ work.description }}</more>
                         </p>
                     </div>
                     <div class="col-lg-3">
                         <p>
-                            <sm>GRADUATED IN {{ school.to_year }}</sm><br />
-                            <!-- <imp>
-              <sm>IN PROGRESS</sm>
-            </imp> -->
+                            <sm>{{ work.from_year }} - {{ work.to_year }}</sm>
                         </p>
-
                     </div>
                     {% endfor %}
-                    <!-- <div class="col-lg-6 col-lg-offset-3">
+                </div>
+                <!--/.row -->
+                <hr>
+
+            </div>
+            <!--/.container -->
+
+
+
+            <!--EDUCATION DESCRIPTION -->
+            <div class="container desc">
+                <div class="row">
+
+                    <div class="col-lg-2 col-lg-offset-1">
+                        <h5>EDUCATION</h5>
+                    </div>
+                    {% for school in education %}
+                    {% if forloop.first %}
+                    <div class="col-lg-6">
+                        {% else %}
+                        <div class="col-lg-6 col-lg-offset-3">
+                            {% endif %}
+                            <p>
+                                <t>{{ school.degree }}</t><br /><i>{{ school.major }}</i> <br /> <a
+                                    {% if school.institutionURL %} href={{ school.institutionURL }} target="_blank"
+                                    {% endif %}>{{ school.institution}}</a>
+
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>GRADUATED IN {{ school.to_year }}</sm><br />
+                                <!-- <imp>
+              <sm>IN PROGRESS</sm>
+            </imp> -->
+                            </p>
+
+                        </div>
+                        {% endfor %}
+                        <!-- <div class="col-lg-6 col-lg-offset-3">
           <p>
             <t>Degree of Web Developer</t><br/> Hastings University <br/>
             <i>2 Years Course</i>
@@ -195,99 +297,20 @@
           </p>
         </div> -->
 
+                    </div>
+                    <!--/.row -->
+                    <br>
                 </div>
-                <!--/.row -->
-                <br>
-            </div>
-            <!--/.container -->
+                <!--/.container -->
 
 
 
-            
+
 
 
                 <!--/.container -->
 
-                <!--SKILLS DESCRIPTION -->
-                <div id="skillswrap">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-2 col-lg-offset-1">
-                                <h5>SKILLS</h5><br>
-                                <div class="col-xs-4 col-lg-12">
-                                    <p><i class="fa fa-circle" style="color: #1486c9"></i>
-                                        <sm> Beginner</sm>
-                                    </p>
-                                </div>
-                                <div class="col-xs-4 col-lg-12">
-                                    <p><i class="fa fa-circle" style="color:#1abc9c"></i>
-                                        <sm> Intermediate</sm>
-                                    </p>
-                                </div>
-                                <div class="col-xs-4 col-lg-12">
-                                    <p><i class="fa fa-circle" style="color:#df5c5c"></i>
-                                        <sm> Expert</sm>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 centered">
-                                <p style="text-transform:uppercase;"><b>SOFTWARE</b></p>
-                            </div>
-                            <div class="col-lg-9">
-                                {% for software in softwares %}
-                                <div class="col-lg-4">
-                                    <!-- <a style="text-transform: uppercase; color: white">{{ software.name }}</a> -->
-                                    <div class="progress" style="height:30px;">
-                                        {% if software.level < 50 %}
-                                        <div class="progress-bar"
-                                            style="width:{{ software.level }}%; margin: auto; background:#1486c9;">
-                                            {{ software.name }}
-                                        </div>
-                                        {% elif software.level >= 80 %}
-                                        <div class="progress-bar"
-                                            style="width:{{ software.level }}%; background: #df5c5c;">{{ software.name }}</div>
-                                        {% else %}
-                                        <div class="progress-bar"
-                                            style="width:{{ software.level }}%; background: #1abc9c;">{{ software.name }}
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
 
-                            <div class="col-lg-9 col-lg-offset-3 centered">
-                                <p style="text-transform:uppercase;"><b>HARDWARE</b></p>
-                            </div>
-                            <div class="col-lg-3 col-lg-offset-3">
-                                <p style="text-transform: uppercase">PCB Design</p>
-                                <div class="progress" style="height:30px">
-                                    <div class="progress-bar" style="width:90%;height:30px"></div>
-                                </div>
-                                <br>
-                            </div>
-                            <div class="col-lg-3">
-                                <p style="text-transform: uppercase">C++</p>
-                                <div class="progress" style="height:30px">
-                                    <div class="progress-bar" style="width:40%;height:30px; background: #1abc9c;"></div>
-                                </div>
-                                <br>
-                            </div>
-                            <div class="col-lg-3">
-                                <p style="text-transform: uppercase">SolidWorks</p>
-                                <div class="progress" style="height:30px">
-                                    <div class="progress-bar" style="width:70%;height:30px"></div>
-                                </div>
-                                <br>
-                            </div>
-
-                        </div>
-                        <!--/.row -->
-                        <br>
-                    </div>
-                    <!--/.container -->
-                </div>
-                <!--/ #skillswrap -->
 
                 <!--SKILLS DESCRIPTION -->
                 <!-- <div id="skillswrap">
@@ -494,13 +517,17 @@
                     </div>
                     <div class="col-lg-4">
                         <p>
-                            <t>Email</t><br /> nooraldinahmed@gmail.com <br />
+                            <t>Email</t><br /> nooraldinahmed@ieee.org <br />
                         </p>
                         <p>
+                            <t>Address</t><br />Mirpur 1, Dhaka 1216,
+                            <br /> Bangladesh
+                        </p>
+                        <!-- <p>
                             <t>Address</t><br /> Genie IoT, Banglalink IT Incubator <br /> Janata Tower (Level -4)
                             <br /> Software Technology
                             Park <br /> 49, Kawran Bazar <br /> Dhaka-1219, Bangladesh <br />
-                        </p>
+                        </p> -->
                         <p>
                             <t>Phone</t><br /> +880 1717229479 <br />
                         </p>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
-from .models import Education, Work, Software
+from .models import Education, Work, Software, Hardware, Others
 from .forms import ContactForm
 from django.core.mail import send_mail
 
@@ -10,7 +10,9 @@ class Index(View):
         self.context['form'] = ContactForm()
         self.context['education']=Education.objects.all()
         self.context['works']=Work.objects.all()
+        self.context['hardwares']=Hardware.objects.all()
         self.context['softwares']=Software.objects.all()
+        self.context['others']=Others.objects.all()
         return render(request, 'portfolio/index.html', self.context)
     
     def post(self, request):

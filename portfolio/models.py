@@ -11,7 +11,7 @@ class Software(models.Model):
     def __str__(self):
         return self.name
 
-class Graphics(models.Model):
+class Others(models.Model):
     
     name = models.CharField(verbose_name="Skill", unique=True, max_length=50, blank= False, null=False)
     level = models.IntegerField(validators=[
