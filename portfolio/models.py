@@ -1,6 +1,13 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+class About(models.Model):
+    about = models.TextField(verbose_name="About", max_length=500, blank=False, null=False)
+    resume = models.FileField(upload_to='uploads/%Y/%m/%d/')
+    portfolioURL = models.URLField(blank=False, null=True)
+    def __str__(self):
+        return 'About'
+
 class Software(models.Model):
     
     name = models.CharField(verbose_name="Skill", unique=True, max_length=50, blank= False, null=False)

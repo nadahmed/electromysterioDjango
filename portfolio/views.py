@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
-from .models import Education, Work, Software, Hardware, Others
+from .models import Education, Work, Software, Hardware, Others, About
 from .forms import ContactForm
 from django.core.mail import send_mail
 
@@ -8,6 +8,7 @@ class Index(View):
     context={}
     def get(self, request):
         self.context['form'] = ContactForm()
+        self.context['about'] = About.objects.get(id=1)
         self.context['education']=Education.objects.all()
         self.context['works']=Work.objects.all()
         self.context['hardwares']=Hardware.objects.all()

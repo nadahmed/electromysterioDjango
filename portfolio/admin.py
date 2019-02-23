@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Software, Hardware, Others, Achievement, Education, Work
+from .models import Software, Hardware, Others, Achievement, Education, Work, About
 
+admin.site.register(About)
 admin.site.register(Software)
 admin.site.register(Others)
 admin.site.register(Hardware)

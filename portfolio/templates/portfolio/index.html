@@ -95,17 +95,15 @@
                         <h5>ABOUT</h5>
                     </div>
                     <div class="col-lg-6">
-                        <p>I'm an Electrical Engineer, web developer & a graphic designer. I'm mostly interested in IoT
-                            edge devices and automation. I also have skills in fields such as CAD Design, PCB design and
-                            UI/UX.</p>
+                        <p>{{ about.about }}</p>
                     </div>
                     <div class="col-lg-3">
                         <!-- <p><a href="#"><i class="icon-file"></i></a>
                             <sm>DOWNLOAD RESUME</sm>
                         </p> -->
-                        <a href="{% static 'files/Resume.pdf' %}" target="_blank" download><button type="button"
+                        <a href={{ about.resume.url }} target="_blank" download><button type="button"
                                 class="btn btn-primary"> DOWNLOAD RESUME </button></a><br><br>
-                        <a href="https://projects.electromysterio.tech" target="_blank"><button type="button"
+                        <a href= {{ about.portfolioURL }} target="_blank"><button type="button"
                                 class="btn btn-success"> CHECK OUT MY PROJECTS </button></a>
                     </div>
 
@@ -446,64 +444,6 @@
                     <br>
                 </div>
                 <!--/.container -->
-    </section>
-
-
-    <section id="works" name="works">
-
-        <div class="container desc">
-            <div class="row">
-                <div class="col-lg-2 col-lg-offset-1">
-                    <h5>PORTFOLIO</h5>
-                </div>
-                <div class="col-lg-6">
-                    <p><img class="img-responsive" src="img/port01.jpg" alt=""></p>
-                </div>
-                <div class="col-lg-3">
-                    <p>CANALS OF ENGLAND</p>
-                    <p>
-                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.<br /><br />
-                            <sm><i class="icon-tag"></i> design</sm>
-                        </more>
-                    </p>
-                </div>
-
-                <div class="col-lg-6 col-lg-offset-3">
-                    <p><img class="img-responsive" src="img/port02.jpg" alt=""></p>
-                </div>
-                <div class="col-lg-3">
-                    <p>SANKEY</p>
-                    <p>
-                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.<br /><br />
-                            <sm><i class="icon-tag"></i> front-end</sm>
-                        </more>
-                    </p>
-                </div>
-
-                <div class="col-lg-6 col-lg-offset-3">
-                    <p><img class="img-responsive" src="img/port03.jpg" alt=""></p>
-                </div>
-                <div class="col-lg-3">
-                    <p>WE GROW</p>
-                    <p>
-                        <more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.<br /><br />
-                            <sm><i class="icon-tag"></i> web design</sm>
-                        </more>
-                    </p>
-                </div>
-
-            </div>
-
-            <br>
-            <br>
-        </div>
-
     </section>
 
     <section id="contact" name="contact">
