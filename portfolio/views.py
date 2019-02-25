@@ -8,7 +8,7 @@ class Index(View):
     context={}
     def get(self, request):
         self.context['form'] = ContactForm()
-        self.context['about'] = About.objects.get(id=1)
+        self.context['about'] = About.objects.all()[0]
         self.context['education']=Education.objects.all()
         self.context['works']=Work.objects.all()
         self.context['hardwares']=Hardware.objects.all().order_by('-level')
