@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MEDIA_URL=''
 ROOT_URLCONF = 'electromysterio.urls'
 
 TEMPLATES = [
@@ -145,8 +145,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR,'media'),
+    os.path.join(BASE_DIR, 'media'),
 )
-MEDIA_ROOT = os.path.join(BASE_DIR,'media'),
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 django_heroku.settings(locals())
