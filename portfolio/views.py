@@ -11,9 +11,9 @@ class Index(View):
         self.context['about'] = About.objects.get(id=1)
         self.context['education']=Education.objects.all()
         self.context['works']=Work.objects.all()
-        self.context['hardwares']=Hardware.objects.all()
-        self.context['softwares']=Software.objects.all()
-        self.context['others']=Others.objects.all()
+        self.context['hardwares']=Hardware.objects.all().order_by('-level')
+        self.context['softwares']=Software.objects.all().order_by('-level')
+        self.context['others']=Others.objects.all().order_by('-level')
         return render(request, 'portfolio/index.html', self.context)
     
     def post(self, request):
