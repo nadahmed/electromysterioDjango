@@ -127,12 +127,12 @@
                                 <sm> Expert</sm>
                             </p>
                         </div>
-                        <div class="col-xs-5 col-lg-12">
+                        <div class="col-xs-4 col-lg-12">
                             <p><i class="fa fa-circle" style="color:#1abc9c"></i>
                                 <sm> Intermediate</sm>
                             </p>
                         </div>
-                        <div class="col-xs-3 col-lg-12">
+                        <div class="col-xs-4 col-lg-12">
                             <p><i class="fa fa-circle" style="color: #1486c9"></i>
                                 <sm> Beginner</sm>
                             </p>
@@ -297,7 +297,7 @@
 
                     </div>
                     <!--/.row -->
-                    <br>
+                    <hr>
                 </div>
                 <!--/.container -->
 
@@ -403,8 +403,9 @@
                         </div>
                     </div>
                     <!--/.row -->
+                    <hr>
                 </div>
-                <br>
+
                 <!--AWARDS DESCRIPTION -->
                 <div class="container desc">
                     <div class="row">
@@ -438,6 +439,36 @@
                                 <sm>DECEMBER 2017</sm>
                             </p>
                         </div>
+
+                    </div>
+                    <!--/.row -->
+                    <hr>
+                </div>
+                <!--/.container -->
+                <!--PROFESSIONAL SOCIETY MEMBERSHIPS DESCRIPTION -->
+                <div class="container desc">
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-1">
+                            <h5>PROFESSIONAL SOCIETY MEMBERSHIPS</h5>
+                        </div>
+                        {% for pro in proMemberships %}
+                    {% if forloop.first %}
+                    <div class="col-lg-6">
+                        {% else %}
+                        <div class="col-lg-6 col-lg-offset-3">
+                            {% endif %}
+                            <p>
+                                <a {% if pro.institutionURL %} href={{ pro.institutionURL }} target="_blank"
+                                    {% endif %}><t>{{ pro.title }}</t></a><br /><i> Total years: {{ pro.years }}</i> 
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>
+                                <sm>{% if pro.status %} ACTIVE {% else %} INACTIVE {% endif %}</sm><br />
+                            </p>
+
+                        </div>
+                        {% endfor %}
 
                     </div>
                     <!--/.row -->

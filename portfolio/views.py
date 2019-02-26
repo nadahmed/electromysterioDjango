@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
-from .models import Education, Work, Software, Hardware, Others, About
+from .models import Education, Work, Software, Hardware, Others, About, ProMembership
 from .forms import ContactForm
 from django.core.mail import send_mail
 
@@ -14,6 +14,7 @@ class Index(View):
         self.context['hardwares']=Hardware.objects.all().order_by('-level')
         self.context['softwares']=Software.objects.all().order_by('-level')
         self.context['others']=Others.objects.all().order_by('-level')
+        self.context['proMemberships']= ProMembership.objects.all()
         return render(request, 'portfolio/index.html', self.context)
     
     def post(self, request):

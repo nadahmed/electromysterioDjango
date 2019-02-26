@@ -82,3 +82,11 @@ class Volunteer(models.Model):
 
     def __str__(self):
         return self.company
+
+class ProMembership(models.Model):
+    title = models.CharField(verbose_name="Membership Name", max_length = 50, unique=True)
+    status = models.BooleanField(verbose_name='Active')
+    institutionURL= models.URLField(verbose_name="Website", default='#')
+    years = models.CharField(verbose_name='Total years', max_length=25, blank=True, null=True)
+    def __str__(self):
+        return self.title
