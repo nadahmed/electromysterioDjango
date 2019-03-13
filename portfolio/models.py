@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class About(models.Model):
     about = models.TextField(verbose_name="About", max_length=500, blank=False, null=False)
-    resume = models.FileField(upload_to='uploads/%Y/%m/%d/')
+    resumeURL = models.CharField(max_length= 500, blank=False, null=True)
     portfolioURL = models.URLField(blank=False, null=True)
     def __str__(self):
         return 'About'
