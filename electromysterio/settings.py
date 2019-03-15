@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '02$xitj*6ajqctc$8po30f#9is2rs1w)=)&+3&f^iz(xne!0k#'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -85,11 +85,11 @@ DATABASES = {
     },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5ku4nkl4ke1gh',
+        'NAME': os.environ.get('DATABASES_NAME'),
         'HOST': 'ec2-54-163-234-88.compute-1.amazonaws.com',
         'PORT': '5432',
-        'USER': 'uownmovdteagwq',
-        'PASSWORD': 'b3df9934d236a1ecb50f1305e477d5962944bcc081a2b5dc6667ef8f1bd2a835',
+        'USER': os.environ.get('DATABASES_USER'),
+        'PASSWORD': os.environ.get('DATABASES_PASSWORD'),
     }
 }
 
@@ -139,7 +139,7 @@ EMAIL_PORT = 465
 
 # Optional SMTP authentication information for EMAIL_HOST.
 EMAIL_HOST_USER = 'contact@electromysterio.tech'
-EMAIL_HOST_PASSWORD = 'N))R@hmed9479'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 
 STATIC_URL = '/static/'
