@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-MEDIA_URL=''
+
 ROOT_URLCONF = 'electromysterio.urls'
 
 TEMPLATES = [
