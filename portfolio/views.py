@@ -9,7 +9,7 @@ class Index(View):
     def get(self, request):
         self.context['form'] = ContactForm()
         self.context['about'] = About.objects.all()[0]
-        self.context['education']=Education.objects.all()
+        self.context['education']=Education.objects.all().order_by('-to_year')
         self.context['works']=Work.objects.all()
         self.context['hardwares']=Hardware.objects.all().order_by('-level')
         self.context['softwares']=Software.objects.all().order_by('-level')
