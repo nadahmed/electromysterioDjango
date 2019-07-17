@@ -62,6 +62,7 @@ class Education(models.Model):
         return self.institution
 
 class Work(models.Model):
+    order = models.IntegerField(default=0)
     title = models.CharField(verbose_name="Role", max_length = 50)
     company = models.CharField(verbose_name="Company", max_length=30)
     companyURL= models.URLField(verbose_name="Company website")

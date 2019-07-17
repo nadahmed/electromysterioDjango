@@ -10,7 +10,7 @@ class Index(View):
         self.context['form'] = ContactForm()
         self.context['about'] = About.objects.all()[0]
         self.context['education']=Education.objects.all().order_by('-to_year')
-        self.context['works']=Work.objects.all().order_by('-id')
+        self.context['works']=Work.objects.all().order_by('-order')
         self.context['hardwares']=Hardware.objects.all().order_by('-level')
         self.context['softwares']=Software.objects.all().order_by('-level')
         self.context['others']=Others.objects.all().order_by('-level')
